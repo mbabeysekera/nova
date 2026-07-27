@@ -1,0 +1,8 @@
+node_modules/
+.eve/
+.devcontainer/
+.env*
+.next/
+.output/
+.nitro/
+dist/
