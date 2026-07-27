@@ -1,0 +1,12 @@
+{
+  "name": "Node.js & TypeScript",
+  "dockerComposeFile": ["docker-compose.yml"],
+  "service": "app",
+  "workspaceFolder": "/workspaces/nova",
+  "forwardPorts": [2000, 5433],
+  "customizations": {
+    "vscode": {
+      "extensions": ["Prisma.prisma"]
+    }
+  }
+}
