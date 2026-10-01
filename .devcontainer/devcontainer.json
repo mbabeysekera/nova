@@ -1,7 +1,12 @@
 {
   "name": "Node.js & TypeScript",
-  "dockerComposeFile": ["docker-compose.yml"],
-  "service": "app",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:4": {
+      "version": "latest",
+      "moby": true
+    }
+  },
   "workspaceFolder": "/workspaces/nova",
   "forwardPorts": [2000, 5433],
   "customizations": {

@@ -1,9 +1,21 @@
 services:
   app:
-    image: mcr.microsoft.com/devcontainers/typescript-node:4-24-trixie
+    build:
+      context: .
+      dockerfile: Dockerfile
+    privileged: true
+    cap_add:
+      - SYS_ADMIN
+      - SYS_PTRACE
     volumes:
       - ..:/workspaces/nova:cached
-    command: sleep infinity
+    command: >
+      /bin/sh -c "dockerd --iptables=false --storage-driver=vfs > /tmp/dockerd.log 2>&1 &
+      until docker info >/dev/null 2>&1; do
+        echo 'waiting for docker daemon...';
+        sleep 2;
+      done;
+      exec sleep infinity"
     depends_on:
       db:
         condition: service_healthy
